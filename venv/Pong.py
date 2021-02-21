@@ -72,6 +72,8 @@ def pong():
                 aiState = True
             surf.fill((BLACK))
             font = pygame.font.Font(None, 50)
+            text0 = font.render("by Connor White", 10, WHITE)
+            surf.blit(text0, (375, 450))
             text = font.render("Press E to play PyPong! 2 Player", 10, WHITE)
             surf.blit(text, (75, 150))
             text2 = font.render("Press F to play PyPong! 1 Player", 10, WHITE)
