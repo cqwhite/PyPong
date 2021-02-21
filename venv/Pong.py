@@ -2,6 +2,8 @@ import sys
 import pygame
 import random
 
+from pygame import mixer
+
 from paddle import Paddle
 from ball import Ball
 
@@ -10,6 +12,9 @@ print(sys.version_info)
 def pong():
     #INIT
     pygame.init()
+
+    paddleSound = pygame.mixer.Sound('C:\\Users\\cqwhi\\PycharmProjects\\Pong\\venv\\pongblip.wav')
+   # pongMusic = pygame.mixer.music.load('C:\\Users\\cqwhi\\PycharmProjects\\Pong\\venv\\ambient-piano-mix.wav')
 
     clock = pygame.time.Clock()
 
@@ -125,11 +130,14 @@ def pong():
                 ball.rect.y = 195
                 ball.velocity[0] = -ball.velocity[0]
             if ball.rect.y > screenHeight:
+                paddleSound.play()
                 ball.velocity[1] = -ball.velocity[1]
             if ball.rect.y < 0:
+                paddleSound.play()
                 ball.velocity[1] = -ball.velocity[1]
 
             if pygame.sprite.collide_mask(ball, player1) or pygame.sprite.collide_mask(ball,player2):
+                paddleSound.play()
                 ball.bounce()
                 #Game Draw
             surf.fill((BLACK))
